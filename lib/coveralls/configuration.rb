@@ -62,7 +62,7 @@ module Coveralls
       config[:service_name]         = 'circleci'
       config[:service_number]       = ENV['CIRCLE_BUILD_NUM']
       config[:service_pull_request] = (ENV['CI_PULL_REQUEST'] || "")[/(\d+)$/,1]
-      config[:parallel]             = ENV['CIRCLE_NODE_TOTAL'].to_i > 1
+      config[:parallel]             = ENV['CIRCLE_NODE_TOTAL'].to_i > 1 unless config[:parallel]
       config[:service_job_number]   = ENV['CIRCLE_NODE_INDEX']
     end
 
